@@ -1,0 +1,39 @@
+1. Attack Process:
+Control of the Network's Consensus Mechanism:
+
+    Proof of Work (PoW):
+                         In PoW-based blockchains like Bitcoin, miners use computational power to solve complex
+                         mathematical puzzles. The attacker would need to control more than 50% of the total
+                         mining power (hash rate) to dominate the network. This allows them to:
+
+                         Create an alternative chain:
+                            The attacker can create a longer chain by mining faster than the rest of the network,
+                            as the PoW protocol always favors the longest chain.
+
+                         Double spending:
+                            The attacker could potentially reverse transactions and double-spend coins
+                            by creating a new chain that excludes the previous transactions, rendering them invalid.
+
+    Proof of Stake (PoS):
+                        In PoS-based blockchains like Ethereum (after its switch from PoW to PoS),
+                        validators are chosen based on the amount of cryptocurrency they hold and
+                        are willing to "stake." An attacker would need to control more than 50% of the staked
+                        cryptocurrency in the network to:
+                                Censor transactions:
+                                    By controlling the majority of staking power, the attacker could
+                                    prevent other validators from adding blocks or processing transactions.
+
+                                Revert transactions:
+                                    Similar to PoW, they could create an alternate chain,
+                                    leading to double-spending or reversion of transactions.
+
+The Attack Sequence:
+
+    The attacker begins by gaining control of the majority of mining power (PoW) or staked tokens (PoS).
+    They then either:
+        Start mining an alternative chain with conflicting transactions (in PoW), or
+        Prevent legitimate transactions and blocks from being validated (in PoS).
+    After a while, the attacker's chain becomes the longest or most accepted,
+    forcing the network to accept their version of the blockchain.
+
+Consequences:

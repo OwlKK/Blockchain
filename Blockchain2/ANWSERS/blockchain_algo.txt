@@ -1,0 +1,44 @@
+Consensus Mechanism: Proof of Adaptive Stake (PoAS)
+
+---HYBRID---
+Participants must stake cryptocurrency to qualify for block validation and complete small,
+computationally efficient puzzles to enhance security
+
+---SECURITY SCALING---
+The complexity of the PoW element adjusts dynamically based on the network’s perceived security risk,
+e.g., higher activity during suspected attacks
+
+---HIGH LEVEL ALGO---
+    ---INIT---
+    Validators are selected proportionally to their stake
+    All validators complete a lightweight computational puzzle
+
+    ---BLOCK VALIDATION---
+    Validator stakes cryptocurrency as collateral
+    Completes a minimal computational task whose difficulty depends on network risk metrics
+
+    ---REWARD ALLOCATION---
+    Validators are rewarded based on their stakes, contribution to computational tasks,
+    and the accuracy of their validation
+
+    ---RISK MONITORING---
+    Anomaly detection algorithms monitor network behavior for signs of malicious activity
+    In case of a detected attack, the PoW difficulty for validators is temporarily increased to deter exploitation
+
+    ---CONSENSUS---
+    The validated block is finalized through collective agreement by staked participants,
+    prioritizing those who complete their tasks correctly
+
+---BENEFITS---
+Energy Efficiency
+    - Reduces energy consumption by using lightweight puzzles and prioritizing staking over mining
+    - Scalling difficulty to reduce energy consumption
+
+Enhanced Security
+    - Adaptive PoW increases resistance to attacks during high-risk periods
+
+Decentralisation
+
+Sustainability
+    Operates with significantly lower energy requirements than traditional PoW systems
+    while maintaining attack resistance
