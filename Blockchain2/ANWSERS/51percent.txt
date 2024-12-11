@@ -8,11 +8,11 @@ Control of the Network's Consensus Mechanism:
 
                          Create an alternative chain:
                             The attacker can create a longer chain by mining faster than the rest of the network,
-                            as the PoW protocol always favors the longest chain.
+                            as the PoW protocol always favors the longest chain
 
                          Double spending:
                             The attacker could potentially reverse transactions and double-spend coins
-                            by creating a new chain that excludes the previous transactions, rendering them invalid.
+                            by creating a new chain that excludes the previous transactions, rendering them invalid
 
     Proof of Stake (PoS):
                         In PoS-based blockchains like Ethereum (after its switch from PoW to PoS),
@@ -21,19 +21,39 @@ Control of the Network's Consensus Mechanism:
                         cryptocurrency in the network to:
                                 Censor transactions:
                                     By controlling the majority of staking power, the attacker could
-                                    prevent other validators from adding blocks or processing transactions.
+                                    prevent other validators from adding blocks or processing transactions
 
                                 Revert transactions:
                                     Similar to PoW, they could create an alternate chain,
-                                    leading to double-spending or reversion of transactions.
+                                    leading to double-spending or reversion of transactions
 
 The Attack Sequence:
 
-    The attacker begins by gaining control of the majority of mining power (PoW) or staked tokens (PoS).
+    The attacker begins by gaining control of the majority of mining power (PoW) or staked tokens (PoS)
     They then either:
         Start mining an alternative chain with conflicting transactions (in PoW), or
-        Prevent legitimate transactions and blocks from being validated (in PoS).
+        Prevent legitimate transactions and blocks from being validated (in PoS)
+
     After a while, the attacker's chain becomes the longest or most accepted,
-    forcing the network to accept their version of the blockchain.
+    forcing the network to accept their version of the blockchain
 
 Consequences:
+    Double Spending:
+        One of the most significant consequences of a 51% attack.
+        This occurs when the attacker can reverse transactions after they've been confirmed on the blockchain,
+        allowing them to spend the same coins twice
+
+    Network Forking and Chain Reorganization:
+        The attacker can force a fork in the blockchain, resulting in a reorganization of blocks.
+        Because forks are only temporary, the rule is that the longest chain gets recognised and the transactions on the
+        shorter one are rolled back, the attacker can in result reverse the transaction aor spend some bitcoin and get
+        it back after they have for example recieved some form of a good or service
+
+    Censorship of Transactions:
+        The attacker can selectively block specific transactions, preventing certain transactions from being validated
+        and included in the blockchain
+
+    Loss of trust:
+        A 51% attack undermines this principle by allowing an attacker to control the network's decisions.
+        Users may lose trust in the security and reliability of the blockchain,
+        leading to a drop in the cryptocurrency's value
