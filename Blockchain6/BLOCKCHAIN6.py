@@ -5,7 +5,7 @@ from cryptography.fernet import Fernet
 
 class Block:
     def __init__(self, previous_hash, transactions):
-        self.timestamp = time.time()  # Timestamp when the block is created
+        self.timestamp = time.time()
         self.previous_hash = previous_hash
         self.transactions = transactions
         self.hash = self.calculate_hash()
@@ -16,8 +16,8 @@ class Block:
 
 
 class Transaction:
-    def __init__(self, sender, receiver, product, quantity, description="", timestamp=None):
-        self.timestamp = timestamp if timestamp else time.time()  # Timestamp when the transaction is created
+    def __init__(self, sender, receiver, product, quantity, description=""):
+        self.timestamp = time.time()
         self.sender = sender
         self.receiver = receiver
         self.product = product
@@ -73,13 +73,11 @@ class SupplyChainNode:
         return Block(previous_hash="1", transactions=[])
 
     def add_transaction(self, sender, receiver, product, quantity, description=""):
-        # Validate participants before adding transaction
         if sender not in self.participants or receiver not in self.participants:
             print("Invalid participant(s). Transaction aborted.")
             return
 
-        # Adding timestamp to the transaction
-        transaction = Transaction(sender, receiver, product, quantity, description, timestamp=time.time())
+        transaction = Transaction(sender, receiver, product, quantity, description)
         block = self.create_block([transaction])
         self.chain.append(block)
         print("Transaction added to the blockchain.")
@@ -99,16 +97,24 @@ class SupplyChainNode:
             print(f"Participant {participant.participant_id} already exists.")
 
     def view_participants(self):
-        print("\nParticipants:")
-        for participant_id, participant in self.participants.items():
-            print(f"ID: {participant_id}, Public Key: {participant.public_key}")
+        if not self.participants:
+            print("No participants available.")
+        else:
+            print("Participants:")
+            for participant_id, participant in self.participants.items():
+                print(f"  ID: {participant_id}, Public Key: {participant.public_key}")
 
     def view_blockchain(self):
-        print("\nBlockchain:")
-        for block in self.chain:
-            print(f"Block Hash: {block.hash} | Timestamp: {block.timestamp}")
+        for idx, block in enumerate(self.chain):
+            print(f"Block {idx}:")
+            print(f"  Timestamp: {time.ctime(block.timestamp)}")
+            print(f"  Previous Hash: {block.previous_hash}")
+            print(f"  Hash: {block.hash}")
+            print(f"  Transactions:")
             for transaction in block.transactions:
-                print(f"  Transaction Hash: {transaction.hash} | Sender: {transaction.sender} | Receiver: {transaction.receiver} | Product: {transaction.product} | Quantity: {transaction.quantity} | Description: {transaction.description} | Timestamp: {transaction.timestamp}")
+                print(f"    Sender: {transaction.sender}, Receiver: {transaction.receiver}, Product: {transaction.product}")
+                print(f"    Quantity: {transaction.quantity}, Description: {transaction.description}")
+                print(f"    Timestamp: {time.ctime(transaction.timestamp)}, Hash: {transaction.hash}")
 
 
 # Command-line interface
@@ -177,10 +183,7 @@ supply_chain_node.add_transaction(sender="NonexistentParticipant", receiver="Man
                                   quantity=50, description="Invalid transaction")
 
 # Display the blockchain
-for block in supply_chain_node.chain:
-    print(f"Block Hash: {block.hash} | Timestamp: {block.timestamp}")
-    for transaction in block.transactions:
-        print(f"  Transaction Hash: {transaction.hash} | Timestamp: {transaction.timestamp}")
+supply_chain_node.view_blockchain()
 
 # CLI Start:
 if __name__ == "__main__":
